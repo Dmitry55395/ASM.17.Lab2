@@ -5,7 +5,7 @@ sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
 sys.stdin = codecs.getreader("utf-8")(sys.stdin.detach())
 
 import st00.main
-import st01.main`
+import st01.main
 import st23.main
 import st07.main
 import st27.main
