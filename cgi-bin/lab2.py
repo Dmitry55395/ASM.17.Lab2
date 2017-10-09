@@ -11,6 +11,12 @@ import st23.main
 import st07.main
 import st27.main
 import st17.main
+import st24.main
+import st27.main
+import st16.main
+import st39.main
+import st31.main
+import st09.main
 
 #	добавить импорт своего модуля по шаблону 
 #	import st<номер по журналу>.main
