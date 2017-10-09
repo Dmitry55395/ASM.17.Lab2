@@ -11,16 +11,12 @@ class Classbook(Book):
 	def print_form(self):
 		Book.print_form(self)
 
-	def print_act(self):
-		print("""<input type="hidden" name="type" value="save_classbook">""")
+	def print_action(self):
+		print(load_template('action_classbook'))
 
 	def print_field(self):
 		Book.print_field(self)
-		print("""Предмет:<br>
-				<input type="text" name="subject" value="{}"><br>""".format(self.__subject))
-
-	def set_subject(self):
-		self.__subject = input('Enter the subject to be learned using the book\n')
+		print(load_template('form_classbook').format(self.__subject))
 
 	def book_registration(self, q):
 		Book.book_registration(self, q)
@@ -28,4 +24,4 @@ class Classbook(Book):
 
 	def show_book(self):
 		Book.show_book(self)
-		print("""<td>{0}</td>""".format(self.__subject))
+		print(load_template('cell').format(self.__subject))

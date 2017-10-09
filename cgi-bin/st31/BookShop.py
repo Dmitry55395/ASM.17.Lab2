@@ -1,4 +1,3 @@
-import cgi, pickle, cgitb, codecs, sys, datetime, os
 from .Book import Book
 from .Classbook import Classbook
 from .function import *
@@ -65,38 +64,15 @@ class BookShop():
 			self.__base[self.maxid] = Classbook
 
 	def show_base(self):
-		print("""<table width = '50%' align="center">
-					<tr align = 'center'>
-						<td><h1>Книжный магазин</td>
-					</tr> 
-				 </table>
-				 <table width = '70%' align="center" border = '1' cellspacing="0">
-					<tr align = 'center' valign = 'middle'>
-						<td width = '1'><b>№</td>
-						<td><b>Тип</td>
-						<td><b>Название</td>
-						<td><b>Стоимость</td>
-						<td><b>Издательство</td>
-						<td><b>Автор</td>
-						<td><b>Предмет</td>
-						<td></td>
-						<td></td>
-					</tr>""")
+		print(load_template('header_table'))
 		for i, item in enumerate(self.__base):
-			print("""<tr align = 'center' valign = 'middle'>
-						<td>
-							{}
-						</td>""".format((i + 1)))
+			print("<tr align = 'center' valign = 'middle'>")
+			print(load_template('cell').format((i + 1)))
 			self.__base[item].show_book()
 			if self.__base[item].__class__.__name__ == 'Book':
 				print("""<td bgcolor="#FFF8DC"></td>""")
-			print("""<td>
-						<a href='{0}?type=delete_book&student={1}&id_book={2}'>Удалить</a><br>
-					</td>
-					<td>
-						<a href='{0}?type=show_form_book&student={1}&id_book={2}'>Редактировать</a><br>
-					</td>
-			</tr>""".format(self.selfurl, self.q.getvalue("student"), self.__base[item].id_book))
+			print(load_template('column_action').format(self.selfurl, self.q.getvalue("student"),
+			                                            self.__base[item].id_book))
 
 		print("""</table>""")
 

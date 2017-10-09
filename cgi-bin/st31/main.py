@@ -1,4 +1,3 @@
-import cgi, cgitb, codecs, sys, os
 from .BookShop import BookShop
 from .function import *
 
@@ -14,7 +13,8 @@ def main(q, selfurl):
 		'clear_shop': book_shop.clear_shop,
 	}
 
-	print_header()
+	print("Content-type: text/html; charset=utf-8\n\n")
+	load_template('header')
 
 	if 'type' in q:
 		try:
@@ -27,5 +27,5 @@ def main(q, selfurl):
 		book_shop.show_base()
 		show_menu(q, selfurl)
 
-	print_footer()
+	load_template('footer')
 	book_shop.save_base()
