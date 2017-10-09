@@ -1,0 +1,25 @@
+<br>
+<table border="1" align="center" border cellspacing="0">
+	<tr>
+		<td align="center" width=15>
+			#
+		</td>
+		<td align="center" width=100>
+			Название(магазин,отдел)
+		</td>
+		<td align="center" width=100>
+			Имя владельца
+		</td>
+		<td align="center" width=100>
+			Адрес
+		</td>
+		<td align="center" width=100>
+			Название отдела
+		</td>
+		<td align="center" width=100>
+			Тип продукта
+		</td>
+		<td>
+			
+		</td>
+	</tr>

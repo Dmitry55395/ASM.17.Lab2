@@ -1,0 +1,26 @@
+<br>
+<tr>
+	<td align="center" width=15>
+		{1}
+	</td>
+	<td align="center" width=100>
+		{2}
+	</td>
+	<td align="center" width=100>
+		{3}
+	</td>
+	<td align="center" width=100>
+		{4}
+	</td>
+	<td align="center" width=100>
+		-
+	</td>
+	<td align="center" width=100>
+		-
+	</td>
+	<td>
+
+		<input type="button" value="Изменить" onclick="window.location.href='?student={0}&market_id={1}&action=show_edit'" />
+		<input type="button" value="Удалить" onclick="window.location.href='?student={0}&market_id={1}&action=remove_market'" />
+	</td>
+</tr>

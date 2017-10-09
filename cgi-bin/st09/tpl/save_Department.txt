@@ -1,0 +1,57 @@
+<form action="/cgi-bin/lab2.py" align="center">
+	<br>
+	<table align="center" border=0>		
+		<input type="hidden" name = "student" value={1} />
+		<input type="hidden" name = "market_id" value={2} />
+		<input type="hidden" name = "is_parent" value={3} />
+		<input type="hidden" name = "action" value="save_Market" />
+		
+                <a href="{0}?student={1}">Вернуться в меню</a><br>
+		<tr>
+			<td>
+				Название магазина
+			</td>
+			<td>
+				<input value = "{4}" type="text" name="nickname"><br>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Имя владельца:
+			</td>
+			<td>
+				<input value = "{5}" type="text" name="owner_name"><br>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Адрес:
+			</td>
+			<td>
+				<input value = "{6}" type="text" name="address"><br>	
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Название отдела
+			</td>
+			<td>
+				<input value = "{7}" type="text" name="department_name"><br>	
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Тип продукта
+			</td>
+			<td>
+				<input value = "{8}" type="text" name="product_type"><br>	
+			</td>
+		</tr>
+		<br>		
+		<tr>
+			<td colspan=2 align=center>
+				<input value='Сохранить' type="submit" style="width:100px">
+			</td>
+		</tr>		
+	</table>
+</form>
