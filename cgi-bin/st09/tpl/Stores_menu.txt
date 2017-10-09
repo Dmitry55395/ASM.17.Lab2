@@ -1,0 +1,23 @@
+<br>
+<table width="50%" align="center">
+	<tr>
+		<td align="center">
+			<a href="?student={0}&market_id=-1&is_parent=True&action=show_edit">Добавить магазин</a>		
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<a href="?student={0}&market_id=-1&is_parent=False&action=show_edit">Добавить отдел</a>		
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<a href="?student={0}&action=clear_stores"> Удалить </a>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<a href={1}> Вернуться в меню </a>
+		</td>
+	</tr>
+</table>
