@@ -3,17 +3,9 @@ import os
 
 def load_template(tpl_name):
 	with open(os.environ['PATH_TRANSLATED'] +
-			          '/cgi-bin/st31/template/' +
-			          tpl_name + '.tpl', 'r') as f:
+					  '/cgi-bin/st31/template/' +
+					  tpl_name + '.tpl', 'r') as f:
 		return f.read()
-
-
-def is_float(value):
-	try:
-		float(value)
-		return True
-	except ValueError:
-		return False
 
 
 def show_menu(q, selfurl):

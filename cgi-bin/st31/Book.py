@@ -7,15 +7,14 @@ class Book:
 	__publishing_house = ''
 	__author = ''
 	id_book = 0
-	field = ''
 
 	def __init__(self, q):
 		self.q = q
 
 	def print_field(self):
 		print(load_template('form_book').format(self.id_book, self.__title, self.__cost,
-		                                        self.__publishing_house,
-		                                        self.__author))
+												self.__publishing_house,
+												self.__author))
 
 	def print_action(self):
 		print(load_template('action_book'))

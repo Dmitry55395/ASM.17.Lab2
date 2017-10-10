@@ -29,3 +29,7 @@ def main(q, selfurl):
 
 	load_template('footer')
 	book_shop.save_base()
+
+
+if __name__ == "__main__":
+	main()

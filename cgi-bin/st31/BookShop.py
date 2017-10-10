@@ -72,7 +72,7 @@ class BookShop():
 			if self.__base[item].__class__.__name__ == 'Book':
 				print("""<td bgcolor="#FFF8DC"></td>""")
 			print(load_template('column_action').format(self.selfurl, self.q.getvalue("student"),
-			                                            self.__base[item].id_book))
+														self.__base[item].id_book))
 
 		print("""</table>""")
 

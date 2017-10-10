@@ -5,12 +5,6 @@ from .function import *
 class Classbook(Book):
 	__subject = ''
 
-	def __init__(self, q):
-		Book.__init__(self, q)
-
-	def print_form(self):
-		Book.print_form(self)
-
 	def print_action(self):
 		print(load_template('action_classbook'))
 
