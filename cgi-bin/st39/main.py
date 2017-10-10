@@ -15,7 +15,8 @@ def main(q, selfurl):
         'save_supervisor': company.save_supervisor,
         'clear_list': company.clear_staff,
         'delete_person': company.remove_person,
-        'edit_employee': company.edit_person
+        'edit_employee': company.edit_person,
+        'edit_supervisor': company.edit_person
     }
     if 'action' in q:
         ACTIONS[q['action'].value]()

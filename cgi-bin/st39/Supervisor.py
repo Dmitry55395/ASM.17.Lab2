@@ -11,15 +11,15 @@ class Supervisor(Employee):
 
 
     def edit(self):
-        print(load_template('employee_form').format(
+        print(load_template('supervisor_form').format(
             self._selfurl,
             self._q['student'].value,
             self._id,
             self._name,
             self._position,
             self._salary,
-            self._responsibility,
-            self._liberties
+            self._liberties,
+            self._responsibility
         ))
 
 

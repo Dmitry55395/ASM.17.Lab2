@@ -58,6 +58,7 @@ class Company:
     def display_staff(self):
         print(load_template('table_header'))
         for person in self._staff:
+            person._q = self._q
             person.display()
         print(load_template('menu').format(
             self._selfurl,
