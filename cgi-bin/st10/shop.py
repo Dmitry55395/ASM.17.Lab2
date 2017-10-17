@@ -5,7 +5,7 @@ import pickle
 
 class Shop:
     shop = []
-    FILE_PATH = 'cgi-bin/st18/mobile_phone_shop.dat'
+    FILE_PATH = 'cgi-bin/st10/mobile_phone_shop.dat'
 
     def __init__(self):
         self.init_from_file()
