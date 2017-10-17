@@ -1,19 +1,21 @@
-import cgi
+from .catalog import *
 
-from .University import *
-
-
-def main(q: cgi.FieldStorage, self_url):
-    RSU = University(self_url, q)
-    student_id = int(q.getvalue('student', 0))
-    Menu.response_ok()
-    menu = Menu(RSU, self_url, student_id)
-
-    if 'act' not in q:
-        menu.show_menu(self_url, student_id)
+def main(q, selfurl):
+    catalog = Catalog(q,selfurl)
+    catalog.load()
+    MENU = {
+        'show': catalog.show,
+        'get':catalog.get,
+        'addnew':catalog.add_new,
+        'addused':catalog.add_used,
+        'edit':catalog.edit_catalog,
+        'delete':catalog.delete_auto,
+        'clear':catalog.clear_catalog
+    }
+    print ("Content-type: text/html; charset=utf-8\n\n")
+    if 'act' in q:
+        MENU[q.getvalue('act')]()
     else:
-        act_id = int(q.getvalue('act', Menu.EXIT_CODE))
-        if act_id == -1:  # remove
-            RSU.remove_man(q.getvalue('id'))
-            return
-        menu.start(act_id)
+        MENU['show']()
+
+    catalog.save()

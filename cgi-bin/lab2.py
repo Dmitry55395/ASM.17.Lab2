@@ -10,17 +10,17 @@ import st03.main
 import st05.main
 import st07.main
 import st09.main
+import st10.main
 import st16.main
 import st17.main
-import st18.main
+import st21.main
 import st22.main
 import st23.main
-import st24.main
-import st27.main
-import st29.main
+import st26.main
+import st28.main
+import st30.main
 import st31.main
-import st32.main
-import st34.main
+import st33.main
 import st39.main
 #	добавить импорт своего модуля по шаблону 
 #	import st<номер по журналу>.main
@@ -33,17 +33,17 @@ MENU = [
 	["[05] Баганов", st05.main.main],
 	["[07] Белова", st07.main.main],
 	["[09] Беркита", st09.main.main],
+	["[10] Бледных", st18.main.main],
 	["[16] Гаврилов", st16.main.main],
 	["[17] Григорян", st17.main.main],
-	["[18] Гуткина", st18.main.main],
-	["[22] Иванов", st22.main.main],
-	["[23] Ишмаметьев", st23.main.main],
-	["[24] Кондрат", st24.main.main],
-	["[27] Ларионов", st27.main.main],
-	["[29] Макарик", st29.main.main],
-	["[31] Николаева", st31.main.main],
-	["[32] Паньшина", st32.main.main],
-	["[34] Попова", st34.main.main],
+	["[21] Иванов", st22.main.main],
+	["[22] Ишмаметьев", st23.main.main],
+	["[23] Кондрат", st24.main.main],
+	["[26] Ларионов", st27.main.main],
+	["[28] Макарик", st29.main.main],
+	["[30] Николаева", st31.main.main],
+	["[31] Паньшина", st32.main.main],
+	["[33] Попова", st34.main.main],
 	["[39] Тимошин", st39.main.main],
 
 #		добавить пункт меню для вызова своей главной функции по шаблону:

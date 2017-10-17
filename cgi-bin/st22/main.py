@@ -1,20 +1,19 @@
-from .prison import *
+import cgi
+
+from .University import *
 
 
-def main(f_param, self_url):
-    print("Content-type: text/html; charset=utf-8\n\n")
-    prison = Prison(f_param, self_url)
-    actions_list = {
-        'print_data': prison.print_data,
-        'get_data': prison.get_data,
-        'add_prisoner': prison.add_prisoner,
-        'add_overseer': prison.add_overseer,
-        'edit_stack': prison.edit_stack,
-        'delete_person': prison.remove_person,
-        'clear_list': prison.clear_list
-    }
-    if 'action' in f_param:
-        actions_list[f_param.getvalue('action')]()
+def main(q: cgi.FieldStorage, self_url):
+    RSU = University(self_url, q)
+    student_id = int(q.getvalue('student', 0))
+    Menu.response_ok()
+    menu = Menu(RSU, self_url, student_id)
+
+    if 'act' not in q:
+        menu.show_menu(self_url, student_id)
     else:
-        actions_list['print_data']()
-
+        act_id = int(q.getvalue('act', Menu.EXIT_CODE))
+        if act_id == -1:  # remove
+            RSU.remove_man(q.getvalue('id'))
+            return
+        menu.start(act_id)
