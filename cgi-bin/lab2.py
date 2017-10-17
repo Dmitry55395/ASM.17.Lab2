@@ -40,7 +40,6 @@ MENU = [
 	["[23] Ишмаметьев", st23.main.main],
 	["[24] Кондрат", st24.main.main],
 	["[27] Ларионов", st27.main.main],
-	["[27] Ларионов", st27.main.main],
 	["[31] Николаева", st31.main.main],
 	["[32] Паньшина", st32.main.main],
 	["[34] Попова", st34.main.main],
