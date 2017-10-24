@@ -18,11 +18,11 @@ class Sportclub():
 			print('!!! base does not exist !!!')
 
 	def load_base(self):
-		with open('cgi-bin/st34/sportclub.db', 'rb')as f:
+		with open('cgi-bin/st33/sportclub.db', 'rb')as f:
 			(self.maxid, self.__base) = pickle.load(f)
 
 	def save_base(self):
-		with open('cgi-bin/st34/sportclub.db', 'wb')as f:
+		with open('cgi-bin/st33/sportclub.db', 'wb')as f:
 			pickle.dump((self.maxid, self.__base), f)
 
 	def get_sportsman(self, id_sportsman):
