@@ -1,37 +1,19 @@
 from .company import Company
-from .function import *
- 
+import cgi 
+
 def main(q, selfurl):
-
-    company = Company(q, selfurl)
-    
-    menu = {
-        "add": company.add,
-        "edit": company.edit,
-        "remove": company.remove,
-        "print": company.print,
-        "clear": company.clear,
-    }
-    
-    print("Content-type: text/html; charset=utf-8\n\n")
-    load_template('header')
-
-   	if 'type' in q:
-		try:
-			menu[q.getvalue('type')]()
-			company.show_base()
-			show_menu(q, selfurl)
-		except Exception as e:
-			print(e, '<br>')
-	else:
-		company.show_base()
-		show_menu(q, selfurl)
-
-	load_template('footer')
-	company.save_base()
-
-
-if __name__ == '__main__':
-    main()
-
+    print("Content-type: text/html; charset=utf-8\n\n") 
+    comp = Company(q, selfurl)
+    comp.menu() 
+    if "action" in q: 
+        if (q["action"].value == "0"):
+            selfurl 
+        if (q["action"].value == "1"):
+            comp.show_list()
+        if (q["action"].value == "2") or (q["action"].value == "3") or ((q["action"].value == "6") and (q["index"].value == "add")) or ((q["action"].value == "7") and (q["index"].value == "add")):
+            comp.add()
+        if (q["action"].value == "4") or ((q["action"].value == "6") and (int(q["index"].value)<len(comp.company)))  or ((q["action"].value == "7") and (int(q["index"].value)<len(comp.company))):
+            comp.edit()
+        if (q["action"].value=="5"):
+            comp.delete()
 

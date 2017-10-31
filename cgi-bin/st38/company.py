@@ -1,85 +1,76 @@
-import pickle
-
 from .emploee import Employee
 from .developer import Developer
-from .function import *
+import pickle 
+import os, cgi
 
-class Company:
-    employees = []
-
+class Company():
     def __init__(self, q, selfurl):
-	    self.q = q
-	    self.selfurl = selfurl
-	    try:
-		    self.load_base()
-	    except:
-		    self.__base = {}
-		    self.maxid = 0
-		    print('!!! Базы не существует !!!')
+        Employee.__init__(self)
+        Developer.__init__(self)
+        self.company = []
+        self.q = q
+        self.selfurl = selfurl
+
+    def menu(self):
+        self.read_from_file()
+        print('<table cellpadding="10" border="1"> <caption>Опции</caption>')
+        print("<tr>")
+        print("<td><a href = {0}?student={1}&action=1> Показать список </a></td>".format(self.selfurl, self.q['student'].value))
+        print("<td><a href = {0}?student={1}&action=2&index={2}> Добавить сотрудника</a></td>".format(self.selfurl, self.q['student'].value,"add"))
+        print("<td><a href = {0}?student={1}&action=3&index={2}> Добавить разработчика</a></td>".format(self.selfurl, self.q['student'].value,"add"))
+        print("<td><a href = {0}?action=0> В главное меню</a></td>".format(self.selfurl))
+        print("</tr>")
+        print("</table>")
+
+    def show_list(self):
+        print('<br><br><b>_____Список сотрудников_____</b><br><br>')
+        for elem in self.company:
+            print("   {0}-й сотрудник".format(self.company.index(elem) + 1))
+            elem.show()
+            print("<br><a href = {0}?student={1}&action=4&index={2}> Редактировать</a> / ".format(self.selfurl, self.q['student'].value, self.company.index(elem)))
+            print("<a href = {0}?student={1}&action=5&index={2}>Удалить<br><br></a>".format(self.selfurl, self.q['student'].value, self.company.index(elem)))
+        if len(self.company) == 0:
+            print("<br>Список пуст<br>")
 
     def add(self):
-         ids = list(map(lambda e: e.id, self.employees))
-        if len(ids) > 0:
-            next_id = max(ids) + 1
-        else:
-            next_id = 1
-        employee_type = input("Кого вы хотите добавить?\n1.Обычный сотрудник\n2.Разработчик\n")
-        if employee_type == "1":
-            employee = Employee(next_id)
-        else:
-            if employee_type == "2":
-                employee = Developer(next_id)
-            else:
-                print("Ошибка! Неверный тип сотрудника")
-                self.add()
-                return
-        self.employees.append(employee)
+        self.read_from_file()
+        if self.q["action"].value == "2": 
+            Employee().form(self.q, self.selfurl)
+        elif self.q["action"].value == "3":
+            Developer().form(self.q, self.selfurl)
+        elif self.q["action"].value == "6":
+            person = Employee()
+            person.read(self.q,self.selfurl)
+            self.company.append(person)
+        elif self.q["action"].value == "7":
+            person = Developer()
+            person.read(self.q,self.selfurl)
+            self.company.append(person)
+        self.write_to_file()
+        self.show_list()
 
     def edit(self):
-        employee = self.get_employee()
-        if employee is not None:
-            employee.edit()
+        self.read_from_file()
+        person = self.company[int(self.q["index"].value)]
+        if self.q["action"].value == "4":
+            person.form(self.q, self.selfurl)
+        elif (self.q["action"].value == "6") or (self.q["action"].value == "7"):
+            self.company.pop(int(self.q["index"].value))
+            person.read(self.q,self.selfurl)
+            self.company.insert(int(self.q["index"].value), person)
+            self.write_to_file()
+        self.show_list()
 
-    def remove(self):
-        employee = self.get_employee()
-        if employee is not None:
-            self.employees.remove(employee)
+    def delete(self): 
+        self.read_from_file()
+        self.company.pop(int(self.q["index"].value))
+        self.write_to_file()
+        self.show_list()
 
-    def print(self):
-       print(load_template('header_table'))
-		for i, item in enumerate(self.__base):
-			print("<tr align = 'center' valign = 'middle'>")
-			print(load_template('cell').format((i + 1)))
-			self.__base[item].show_book()
-			if self.__base[item].__class__.__name__ == 'Компания':
-				print("""<td bgcolor="#FFF8DC"></td>""")
-			print(load_template('column_action').format(self.selfurl, self.q.getvalue("student"),
-														self.__base[item].id_book))
+    def read_from_file(self):
+        with open("cgi-bin/st38/file.txt", 'rb') as f:
+            self.company = pickle.load(f)
 
-		print("""</table>""")
-
-    def clear(self):
-        self.employees.clear()
-
-    def serialize(self):
-        with open('cgi-bin/st38/company.db', 'wb') as f:
-         pickle.dump((self.maxid, self.__base), f)
-
-    def deserialize(self):
-        with open('cgi-bin/st38/company.db', 'rb') as f:
-           (self.maxid, self.__base) = pickle.load(f)
-
-                
-    def get_employee(self):
-        try:
-            id = int(input("Введите номер сотрудника, которого вы хотите отредактировать\n"))
-        except:
-            print("Ошибка! Введите число")
-            self.get_employee()
-            return
-        employees = [e for e in self.employees if e.id == id]
-        if len(employees) == 0:
-            print("Сотрудника с таким номером не существует")
-            return
-        else:
-            return employees[0]
+    def write_to_file(self):
+        with open("cgi-bin/st38/file.txt", 'wb') as f:
+            pickle.dump(self.company, f)
