@@ -4,7 +4,7 @@ from .Run import Run
 from .Marathon import Marathon
 from .Form import Form
 
-STORAGE_FILENAME = 'cgi-bin/st32/runJournal.dat'
+STORAGE_FILENAME = 'cgi-bin/st31/runJournal.dat'
 
 class Journal:
     def __init__(self):
