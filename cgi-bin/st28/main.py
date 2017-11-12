@@ -8,9 +8,7 @@ def main(q, selfurl):
             "show_edit": agency.show_model_edit,
             "save_model": agency.save_model,
             "remove_model": agency.remove_model,
-            "write agency to file": agency.write_file,
-            "clear_agency": agency.clear_agency,
-            "exit": None
+            "clear_agency": agency.clear_agency
     }
     print("Content-type: text/html; charset=utf-8\n\n")
 
