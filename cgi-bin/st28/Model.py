@@ -1,6 +1,6 @@
 class Model:
-    surname = ' '
-    name = ' '
+    surname = 'None'
+    name = 'None'
     age = 0
     growth = 0
     weight = 0

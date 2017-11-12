@@ -91,12 +91,12 @@ class ModelAgency:
         self.__back_to_menu()
 
     def write_file(self):
-        f = open('cgi-bin/st29/Storage/agency.dat', 'wb')
+        f = open('cgi-bin/st28/Storage/agency.dat', 'wb')
         pickle.dump(self.agency, f)
         f.close()
 
     def read_file(self):
-        f = open('cgi-bin/st29/Storage/agency.dat', 'rb')
+        f = open('cgi-bin/st28/Storage/agency.dat', 'rb')
         self.agency = pickle.load(f)
         f.close()
 

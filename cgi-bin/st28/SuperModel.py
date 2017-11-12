@@ -2,7 +2,7 @@ from .Model import *
 
 
 class SuperModel(Model):
-    magazine = ' '
+    magazine = 'None'
 
     def __init__(self):
         pass
