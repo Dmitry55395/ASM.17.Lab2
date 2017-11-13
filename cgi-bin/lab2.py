@@ -1,4 +1,4 @@
-﻿import cgi, cgitb, os, sys, codecs
+import cgi, cgitb, os, sys, codecs
 
 cgitb.enable()
 sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
@@ -9,6 +9,7 @@ import st01.main
 import st02.main
 import st03.main
 import st05.main
+import st06.main
 import st07.main
 import st09.main
 import st10.main
@@ -42,6 +43,7 @@ MENU = [
     ["[02] Аганов", st02.main.main],
     ["[03] Антипов", st03.main.main],
     ["[05] Баганов", st05.main.main],
+	["[06] Батищев", st06.main.main],
     ["[07] Белова", st07.main.main],
     ["[09] Беркита", st09.main.main],
     ["[10] Бледных", st10.main.main],
