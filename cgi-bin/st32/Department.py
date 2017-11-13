@@ -18,10 +18,10 @@ class Department:
         self.Set_Info(q)
 
     def Set_DepName(self,q):
-        self.DepName = q.getvalue("OrganizationName")
+        self.DepName = q.getvalue("DepName")
 
     def Set_OrgName(self,q):
-        self.OrganizationName = q.getvalue("DepName")
+        self.OrganizationName = q.getvalue("OrganizationName")
 
     def Set_Floor(self,q):
         self.Floor = q.getvalue("Floor")
@@ -33,6 +33,6 @@ class Department:
 #        print("\n1. Organization: "+self.OrganizationName+"\n2. Department Name: "+self.DepName+"\n3. Floor: "+self.Floor+"\n4. Info: "+self.info)
         print("""<td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td></td><td></td><td></td><td></td><td></td>
 <td><a href="{5}?type=10&student={4}&nomer={6}">Edit</a><br>
-<a href="{5}?type=12&student={4}&nomer={6}">Delete</a></td>""".format(self.DepName,self.OrganizationName,self.Floor,self.info,q.getvalue("student"),selfurl,nomer))
+<a href="{5}?type=12&student={4}&nomer={6}">Delete</a></td>""".format(self.OrganizationName,self.DepName,self.Floor,self.info,q.getvalue("student"),selfurl,nomer))
 
 

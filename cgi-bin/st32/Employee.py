@@ -32,4 +32,4 @@ class Employee(Department):
     def Show(self,q,selfurl,nomer):
         print("""<td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{7}</td><td>{8}</td><td>{9}</td><td>{10}</td><td>{11}</td>
 <td><a href="{5}?type=11&student={4}&nomer={6}">Edit</a><br>
-<a href="{5}?type=12&student={4}&nomer={6}">Delete</a></td>""".format(self.DepName,self.OrganizationName,self.Floor,self.info,q.getvalue("student"),selfurl,nomer,self.FullName,self.Age,self.PhoneNum,self.TurnTo,self.Salary)) 
+<a href="{5}?type=12&student={4}&nomer={6}">Delete</a></td>""".format(self.OrganizationName,self.DepName,self.Floor,self.info,q.getvalue("student"),selfurl,nomer,self.FullName,self.Age,self.PhoneNum,self.TurnTo,self.Salary)) 
