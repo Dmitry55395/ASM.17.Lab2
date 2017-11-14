@@ -58,14 +58,14 @@ class Data_Base:
 
     def read_file(self):
         try:
-            with open('cgi-bin/st13/pickledata.dat', "rb") as f:
+            with open('cgi-bin/st35/pickledata.dat', "rb") as f:
                 self.l = pickle.load(f)
         except EOFError:
             return {}
 
     def write_file(self):
         try:
-            with open('cgi-bin/st13/pickledata.dat', "wb")as f:
+            with open('cgi-bin/st35/pickledata.dat', "wb")as f:
                 pickle.dump(self.l, f)
         except EOFError:
             return {}
