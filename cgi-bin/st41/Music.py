@@ -81,8 +81,8 @@ class Music:
 
     def show_edit_form(self, q, self_url):
         id = int(q.getvalue('id'))
-        phone = self.musics[id - 1]
-        phone.show_edit_form(q, self_url)
+        music = self.musics[id - 1]
+        music.show_edit_form(q, self_url)
 
     def clear(self, q, self_url):
         self.musics.clear()
@@ -90,23 +90,23 @@ class Music:
         self.go_to_home_page(q, self_url)
 
     def insert_native(self, q, self_url):
-        mobile_phone = Native(
+        music = Native(
             q.getvalue('name'),
             q.getvalue('album_name'),
             q.getvalue('year')
         )
-        self.musics.append(mobile_phone)
+        self.musics.append(music)
         self.save()
         self.go_to_home_page(q, self_url)
 
     def insert_foreign(self, q, self_url):
-        smart_phone = Foreign(
+        music = Foreign(
             q.getvalue('name'),
             q.getvalue('album_name'),
             q.getvalue('year'),
             q.getvalue('country'),
         )
-        self.musics.append(smart_phone)
+        self.musics.append(music)
         self.save()
         self.go_to_home_page(q, self_url)
 
