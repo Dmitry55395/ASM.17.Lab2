@@ -8,8 +8,8 @@ from .Director import Person, Director
 
 # Класс-контейнер Организации
 class Organization:
-    _FILENAME_STORAGE = 'cgi-bin/st13/store/storage'
-    _FILENAME_UN_STORAGE = 'cgi-bin/st13/store/organization_storage'
+    _FILENAME_STORAGE = os.environ['PATH_TRANSLATED'] +'/cgi-bin/st13/store/storage'
+    _FILENAME_UN_STORAGE = os.environ['PATH_TRANSLATED'] +'/cgi-bin/st13/store/organization_storage'
     params = ['name']
     placeholder = ['Имя']
 
@@ -90,9 +90,12 @@ class Organization:
         print('Данные обновлены.')
 
     def get_list(self):
-        with open(self._FILENAME_STORAGE, 'rb') as f:
-            mans = pickle.load(f)
-            self.people = mans
+        try:
+            with open(self._FILENAME_STORAGE, 'rb') as f:
+                mans = pickle.load(f)
+                self.people = mans
+        except:
+            pass
 
     def save_name(self):
         with open(self._FILENAME_UN_STORAGE, 'wb') as f:
@@ -100,9 +103,12 @@ class Organization:
         print('Наименование организации сохранено')
 
     def get_name(self):
-        if os.path.getsize(self._FILENAME_UN_STORAGE) > 0:
-            with open(self._FILENAME_UN_STORAGE, 'rb') as f:
-                self.name = pickle.load(f)
+        try:
+            if os.path.getsize(self._FILENAME_UN_STORAGE) > 0:
+                with open(self._FILENAME_UN_STORAGE, 'rb') as f:
+                    self.name = pickle.load(f)
+        except:
+            pass
 
     def edit(self):
         if 'name' in self.q:
