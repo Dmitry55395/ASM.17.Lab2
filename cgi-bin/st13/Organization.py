@@ -73,7 +73,7 @@ class Organization:
         print('Организация ' + self.name + ' содержит: </br>')
         for index, man in enumerate(self.people):
             print(
-                '<a href={0}?person={1}&act=-1&id={2}>удалить</a>'.format(self.url, self.q.getvalue('person'), index))
+                '<a href={0}?student={1}&act=-1&id={2}>удалить</a>'.format(self.url, self.q.getvalue('student'), index))
             href = '&id={0}'.format(index)
             if type(man) is Person:
                 href += '&act=0'
@@ -81,7 +81,7 @@ class Organization:
                 href += '&act=1'
             for param in man.params:
                 href += '&{0}={1}'.format(param, getattr(man, param))
-            print('<a href={1}?person={2}{3}>{0}</a>'.format(man, self.url, self.q.getvalue('person'), href))
+            print('<a href={1}?student={2}{3}>{0}</a>'.format(man, self.url, self.q.getvalue('student'), href))
         self.back()
 
     def save_list(self):
@@ -118,4 +118,4 @@ class Organization:
         form.render(self)
 
     def back(self):
-        Menu.back_button(self.url, self.q.getvalue('person'))
+        Menu.back_button(self.url, self.q.getvalue('student'))

@@ -5,12 +5,12 @@ from .Organization import *
 
 def main(q: cgi.FieldStorage, self_url):
     ORG = Organization(self_url, q)
-    person_id = int(q.getvalue('person', 0))
+    student_id = int(q.getvalue('student', 0))
     Menu.response_ok()
-    menu = Menu(ORG, self_url, person_id)
+    menu = Menu(ORG, self_url, student_id)
 
     if 'act' not in q:
-        menu.show_menu(self_url, person_id)
+        menu.show_menu(self_url, student_id)
     else:
         act_id = int(q.getvalue('act', Menu.EXIT_CODE))
         if act_id == -1:  # remove

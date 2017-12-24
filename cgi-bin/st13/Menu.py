@@ -1,11 +1,11 @@
 class Menu:
     EXIT_CODE: int = 6
 
-    def __init__(self, organization, url, person_id):
+    def __init__(self, organization, url, student_id):
         self.organization = organization
         self.instance = self.get()
         self.url = url
-        self.person_id = person_id
+        self.student_id = student_id
 
     def get(self):
         return [
@@ -16,18 +16,18 @@ class Menu:
             ['Очистить', self.organization.clear_men]
         ]
 
-    # если person_id == None, переходим на начальную страницу
+    # если student_id == None, переходим на начальную страницу
     @staticmethod
-    def back_button(url, person_id=None):
-        if person_id is None:
+    def back_button(url, student_id=None):
+        if student_id is None:
             print('<a href="{0}">Назад</a>'.format(url))
         else:
-            print('<a href="{0}?person={1}">Назад</a>'.format(url, person_id))
+            print('<a href="{0}?student={1}">Назад</a>'.format(url, student_id))
 
-    def show_menu(self, self_url, person_id):
+    def show_menu(self, self_url, student_id):
         print('<pre>------------------------------')
         for i, item in enumerate(self.instance):
-            print('<a href="{0}?person={1}&act={3}">[{3}] {2}</a>'.format(self_url, person_id, item[0], i))
+            print('<a href="{0}?student={1}&act={3}">[{3}] {2}</a>'.format(self_url, student_id, item[0], i))
         Menu.back_button(self.url)
         print("------------------------------</pre>")
 
