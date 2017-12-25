@@ -6,7 +6,8 @@ def main(q,selfurl):
     m=Menu(q,selfurl)
     HeaderPrint()
     
-    l=[m.AddDishMenu,m.AddVipDishMenu,m.EditDishMenu,m.DeleteDishMenu,m.ShowDishMenu,m.ShowInputDishForm,m.ShowInputVipDishForm,m.ShowEditDishMenu,m.CleareDishMenu]
+    l=[m.AddDishInMenu,m.AddVipDishInMenu,m.EditDishInMenu,m.DeleteDishInMenu,m.ShowMenu,m.DishForm,m.VipDishForm,m.EditForm,m.ClearMenu]
+    
     try:
         l[int(q.getvalue('type'))]()
     except Exception as e:
@@ -14,7 +15,7 @@ def main(q,selfurl):
         l[4]()
     
     FooterPrint()
-    m.SafeDishMenu()
+    m.SafeMenu()
 
 if __name__ == "__main__":
     main()

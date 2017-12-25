@@ -9,66 +9,66 @@ class Menu:
         self.q=q
         self.selfurl=selfurl
         try:
-            self.LoadDishMenu()
+            self.LoadMenu()
         except:
             self.listdish = []
 
-    def AddDishMenu(self):
+    def AddDishInMenu(self):
         d=Dish()
         d.AddDish(self.q)
         self.listdish.append(d)
-        self.ShowDishMenu()
+        self.ShowMenu()
 
-    def ShowInputDishForm(self):
+    def DishForm(self):
         d=Dish()
-        print(LoadTpl("formtype0").format(self.selfurl))
-        d.DishForm(self.q,self.selfurl)
-        print(LoadTpl("submitendform"))
+        print(LoadTpl("form_type1").format(self.selfurl,0))
+        d.Form(self.q,self.selfurl)
+        print(LoadTpl("submit_and_endform"))
 
-    def AddVipDishMenu(self):
+    def AddVipDishInMenu(self):
         vd=VipDish()
         vd.AddDish(self.q)
         self.listdish.append(vd)
-        self.ShowDishMenu()
+        self.ShowMenu()
 
-    def ShowInputVipDishForm(self):
+    def VipDishForm(self):
         vd=VipDish()
-        print(LoadTpl("formtype1").format(self.selfurl))
-        vd.DishForm(self.q,self.selfurl)
-        print(LoadTpl("submitendform"))
+        print(LoadTpl("form_type1").format(self.selfurl,1))
+        vd.Form(self.q,self.selfurl)
+        print(LoadTpl("submit_and_endform"))
 
-    def ShowDishMenu(self):
+    def ShowMenu(self):
         if (len(self.listdish)>0):
-            ShowHeadTable()
+            PrintHeadTable()
             for i in self.listdish:
-                print("<tr>")
+                PrintOpenTR()
                 i.ShowDish(self.q,self.selfurl,self.listdish.index(i))
-                print("</tr>")
-            print("</table>")
-        ShowLink(self.q,self.selfurl)
+                PrintCloseTR()
+            PrintCloseTable()
+        PrintLink(self.q,self.selfurl)
 
-    def DeleteDishMenu(self):
+    def DeleteDishInMenu(self):
         del self.listdish[int(self.q.getvalue("inx"))]
-        self.ShowDishMenu()
+        self.ShowMenu()
 
-    def CleareDishMenu(self):
+    def ClearMenu(self):
         self.listdish.clear()
-        self.ShowDishMenu()
+        self.ShowMenu()
         
-    def SafeDishMenu(self):
+    def SafeMenu(self):
         with open('cgi-bin/st17/menu.db',"wb")as f:
             pickle.dump(self.listdish,f)
 
-    def LoadDishMenu(self):
+    def LoadMenu(self):
         with open('cgi-bin/st17/menu.db',"rb") as f:
             self.listdish=pickle.load(f)
         
-    def ShowEditDishMenu(self):
-        print(LoadTpl("formtype2").format(self.selfurl,self.q.getvalue("inx")))
-        self.listdish[int(self.q.getvalue("inx"))].DishForm(self.q,self.selfurl)
-        print(LoadTpl("submitendform"))
+    def EditForm(self):
+        print(LoadTpl("form_type2").format(self.selfurl,self.q.getvalue("inx")))
+        self.listdish[int(self.q.getvalue("inx"))].Form(self.q,self.selfurl)
+        print(LoadTpl("submit_and_endform"))
 
-    def EditDishMenu(self):
+    def EditDishInMenu(self):
         self.listdish[int(self.q.getvalue("inx"))].AddDish(self.q)
-        self.ShowDishMenu()
+        self.ShowMenu()
             

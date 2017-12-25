@@ -1,4 +1,4 @@
-import cgi,os
+import cgi
 from st17.Dish import Dish
 from st17.FormShow import *
 
@@ -14,9 +14,9 @@ class VipDish(Dish):
         self.bonus=q.getvalue("bonus")
         self.calories=q.getvalue("calories")
         
-    def DishForm(self,q,selfurl):
-        Dish.DishForm(self,q,selfurl)
-        print(LoadTpl("vipdishdishform").format(self.bonus,self.calories))
+    def Form(self,q,selfurl):
+        Dish.Form(self,q,selfurl)
+        print(LoadTpl("vipdish_form").format(self.bonus,self.calories))
         
     def ShowDish(self,q,selfurl,inx):
-        print(LoadTpl("vipdishshowdish").format(self.name,self.price,self.grams,self.description,self.bonus,self.calories,q.getvalue("student"),selfurl,inx))
+        print(LoadTpl("show_vipdish").format(self.name,self.price,self.grams,self.description,self.bonus,self.calories,q.getvalue("student"),selfurl,inx))

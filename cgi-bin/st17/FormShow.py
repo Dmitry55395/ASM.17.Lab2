@@ -8,11 +8,20 @@ def LoadTpl(tplName):
 def HeaderPrint():
     print(LoadTpl("header"))
 
-def ShowHeadTable():
-    print(LoadTpl("headtable"))
-
-def ShowLink(q,selfurl):
-    print(LoadTpl("link").format(selfurl, q.getvalue("student")))
-
 def FooterPrint():
     print(LoadTpl("footer"))
+
+def PrintLink(q,selfurl):
+    print(LoadTpl("link").format(selfurl, q.getvalue("student")))
+
+def PrintHeadTable():
+    print(LoadTpl("head_table"))
+
+def PrintOpenTR():
+    print(LoadTpl("open_tr"))
+
+def PrintCloseTR():
+    print(LoadTpl("close_tr"))
+
+def PrintCloseTable():
+    print(LoadTpl("close_table"))
