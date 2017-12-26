@@ -7,7 +7,7 @@ class fullinfcar(infcar):
         self.speed = ""
 
 
-    def tbl(self, q ,selfurl):
+    def table(self, q ,selfurl):
         self.q = q
         self.selfurl = selfurl
         print('<br><table><tr><td>')

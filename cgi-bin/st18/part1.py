@@ -6,7 +6,7 @@ class infcar:
         self.color = ""
         self.year = ""
 
-    def tbl(self, q ,selfurl):
+    def table(self, q ,selfurl):
         self.q = q
         self.selfurl = selfurl
         print('<br><table><tr><td>')
@@ -24,7 +24,7 @@ class infcar:
         print('</form></tr></td></table>')
     
 
-    def read(self, q ,selfurl):
+    def read (self, q ,selfurl):
         self.q = q
         self.selfurl = selfurl
         if ('mark' in self.q):
@@ -32,13 +32,10 @@ class infcar:
         else: self.mark = ""
         if ('color' in self.q):
             self.color = self.q['color'].value
-        else: self.color = ""
+        else: self.year = ""
         if ('year' in self.q):
             self.year = self.q['year'].value
         else: self.year = ""
 
     def write(self):
-        print("<br>Марка автомобиля: {0} | Цвет автомобиля: {1} | : Год выпуска автомобиля: {2} ".format(self.mark,self.color,self.year))
-
-    
-
+        print("<br>Марка автомобиля: {0} | Цвет автомобиля: {1} | Год выпуска автомобиля: {2} ".format(self.mark,self.color,self.year))

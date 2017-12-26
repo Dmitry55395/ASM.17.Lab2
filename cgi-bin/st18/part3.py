@@ -1,6 +1,6 @@
 from .part2 import *
 import pickle
-import cgi
+import  cgi
 
 class autopark:
     
@@ -12,13 +12,10 @@ class autopark:
         self.selfurl = selfurl
         pass
         
-    def tbl(self):
+    def table(self):
         #self.wrtf()
         self.rff()
-        print("<style> table, td, th { border-collapse: collapse; border-left: 10px solid #663399; background-color: lightgrey;} ")
-        print("table { width: 100%; } td {height: 50px; text-align: center;font-size: 20px;font-family: Monaco, Courier, monospace; } ")
-        print("h1 { font-size: 15px; font-style: oblique; } </style>")
-        
+             
         print('<table>')
         print("<tr>")
         print("<td><a href = {0}?action=2&index=-1&student={1}> Добавить информацию об автомобиле</a></td>".format(self.selfurl, self.q['student'].value))
@@ -38,14 +35,14 @@ class autopark:
             print("<br><a href = {0}?action=4&index={1}&student={2}> Редактировать</a> / ".format(self.selfurl, self.data.index(i), self.q['student'].value))
             print("<a href = {0}?action=5&index={1}&student={2}>Удалить<br><br></a>".format(self.selfurl, self.data.index(i), self.q['student'].value))
         if len(self.data) == 0:
-            print("<br>Список пуст<br></h1>")
+            print("<br>Список пустой<br></h1>")
 
-    def add (self):
+    def add(self):
         self.rff()
         if self.q["action"].value == "2":
-            infcar().tbl(self.q, self.selfurl)
+            infcar().table(self.q, self.selfurl)
         elif self.q["action"].value == "3":
-            fullinfcar().tbl(self.q, self.selfurl)
+            fullinfcar().table(self.q, self.selfurl)
         elif self.q["action"].value == "6":
             part1 = infcar()
             part1.read(self.q, self.selfurl)
@@ -62,7 +59,7 @@ class autopark:
     def edit(self):
         self.rff()      
         if self.q["action"].value == "4":
-            self.data[int(self.q["index"].value)].tbl(self.q, self.selfurl)
+            self.data[int(self.q["index"].value)].table(self.q, self.selfurl)
         elif (self.q["action"].value == "6") or (self.q["action"].value == "7"):
             self.data[int(self.q["index"].value)].read(self.q,self.selfurl)
         self.wrtf()
@@ -81,5 +78,3 @@ class autopark:
     def rff(self):
         pickle_in = open(autopark.FILENAME,"rb")
         self.data = pickle.load(pickle_in)
-
-
