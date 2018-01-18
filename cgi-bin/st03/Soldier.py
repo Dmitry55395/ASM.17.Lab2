@@ -1,23 +1,30 @@
+from .TplLoader import *
 
 class Private(object):
-    def __init__(self , name = ' ' , surname = ' ', age = ' ', specialization = ' '):
-        self.name = name
-        self.surname = surname
-        self.age = age
-        self.specialization = specialization
+    def __init__(self , q, selfurl):
+        self.q=q
+        self.url=selfurl
+        self.name = ''
+        self.surname = ''
+        self.age = ''
+        self.specialization = ''
+            
+    def data_input(self,e):
+        print(LoadTpl('SoldierForm').format(self.q['student'].value,self.url,e,self.name,self.surname,self.age,self.specialization))
+
+    def edit(self,e):
+        print(LoadTpl('SoldierForm').format(self.q['student'].value,self.url,e,self.name,self.surname,self.age,self.specialization))
+
+    def save_input(self):
+        self.name = self.q.getvalue('name')
+        self.surname = self.q.getvalue('surname')
+        self.age = self.q.getvalue('age')
+        self.specialization = self.q.getvalue('specialization')
+
         
-    def __str__(self):
-        rep = "This is object of class Private"
-        return rep
-    
-    def data_input(self):
-        self.name = input("Name: " ,)
-        self.surname =  input("Surname: " ,)
-        self.age = input("Age: " ,)
-        self.specialization = input("Specialization: " ,)
-        
-    def output(self):
-        print(self.name,' ', self.surname, ' ', self.age,' ',self.specialization)
+    def output(self, index):
+        #print(self.name,' ', self.surname, ' ', self.age,' ',self.specialization)
+        print(LoadTpl('ElementShowSoldier').format(self.q['student'].value,self.url, self.name,self.surname,self.age,self.specialization,index))
 
 
                
