@@ -59,7 +59,7 @@ MENU = [
         ["[04] Аушев", st04.main.main],
 	["[05] Баганов", st05.main.main],
 	["[07] Белова", st07.main.main],
-	["[08] Беляева, st08.main.main],
+	["[08] Беляева", st08.main.main],
 	["[09] Беркита", st09.main.main],
 	["[10] Бледных", st10.main.main],
 	["[12] Бреткин", st12.lab2.main],
