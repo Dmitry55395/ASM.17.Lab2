@@ -7,7 +7,7 @@ sys.stdin = codecs.getreader("utf-8")(sys.stdin.detach())
 import st00.main
 import st01.main
 import st02.main
-import st03.main
+#import st03.main
 import st04.main
 import st05.main
 import st07.main
@@ -45,6 +45,7 @@ import st32.main
 import st29.main
 import st11.main
 import st15.main
+import st43.main
 
 
 #	добавить импорт своего модуля по шаблону
@@ -55,7 +56,7 @@ MENU = [
 	["[00] Образец", st00.main.main],
 	["[01] Абдуллатипова", st01.main.main],
         ["[02] Аганов", st02.main.main],
-	["[03] Антипов", st03.main.main],
+#	["[03] Антипов", st03.main.main],
         ["[04] Аушев", st04.main.main],
 	["[05] Баганов", st05.main.main],
 	["[07] Белова", st07.main.main],
@@ -93,6 +94,7 @@ MENU = [
         ["[32] Платов", st32.main.main],
         ["[11] Боброва", st11.main.main],
         ["[15] Внуков", st15.main.main],
+        ["[43] Кондраев", st43.main.main],
 
 #		добавить пункт меню для вызова своей главной функции по шаблону:
 #		["[<номер по журналу>] <Фамилия>", <ссылка на функцию>],
